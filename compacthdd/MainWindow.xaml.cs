@@ -12,10 +12,13 @@ namespace compacthdd
     {
         public String UUID;
         public String Location;
-        public HDD(String uuid, String location) 
+        public int Size;
+
+        public HDD(String uuid, String location, int size) 
         {
             UUID = uuid;
             Location = location;
+            Size = size;
         }
     }
 
@@ -75,13 +78,28 @@ namespace compacthdd
             foreach (HDD item in hdds)
             {
                 Box.Items.Add(item.Location);
+                BoxR.Items.Add(item.Location);
             }
         }
-       
+        
+        public HDD GetByLocation(String location)
+        {
+            for (int i = 0; i < hdds.Count; i++)
+            {
+                if (hdds[i].Location.ToString() == location)
+                {
+                    return hdds[i];
+                }
+            }
+            return null;
+        }
+
         private List<HDD> GetUUIDs()
         {
+            hdds.Clear();
             String Uuid = "";
             String Location = "";
+            int size = 0;
 
             Process P = new Process();
             P.StartInfo.FileName = Filepath2Binary;
@@ -104,12 +122,18 @@ namespace compacthdd
                     if (e.Data.Substring(0, 8).Contains("Location"))
                     {
                         Location = e.Data.Substring(16);
+                    }
+
+                    if (e.Data.Substring(0, 8).Contains("Capacity"))
+                    {
+                        String tmp = e.Data.Substring(16);
+                        size = Int32.Parse(tmp.Substring(0, tmp.Length - 7));
                         Both = true;
                     }
 
                     if (Both)
                     {
-                        hdds.Add(new HDD(Uuid, Location));
+                        hdds.Add(new HDD(Uuid, Location, size));
                         Both = false;
                     }
                 }
@@ -123,11 +147,11 @@ namespace compacthdd
             return hdds;
         }
 
-        private void Compact(String uuid)
+        private void Compact(HDD hdd)
         {
             Process P = new Process();
             P.StartInfo.FileName = Filepath2Binary;
-            String args = "modifyhd " + uuid + " --compact";
+            String args = "modifymedium " + hdd.UUID + " --compact";
             P.StartInfo.Arguments = args;
             P.StartInfo.UseShellExecute = false;
 
@@ -136,24 +160,26 @@ namespace compacthdd
             P.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Resize(HDD hdd)
+        {
+            Process P = new Process();
+            P.StartInfo.FileName = Filepath2Binary;
+            String args = "modifymedium " + hdd.UUID + " --resize " + Int32.Parse(DesiredSize.Text);
+            P.StartInfo.Arguments = args;
+            P.StartInfo.UseShellExecute = false;
+
+            P.Start();
+            P.WaitForExit();
+            P.Close();
+        }
+
+        private void ButtonCompact_Click(object sender, RoutedEventArgs e)
         // Code for event handler on Compact button
         {
             if (Box.SelectedItem != null)
             {
                 String location = (Box.SelectedItem).ToString();
-                String uuid = "";
-
-
-                for(int i = 0; i < hdds.Count; i++)
-                {
-                    if (hdds[i].Location.ToString() == location)
-                    {
-                        uuid = hdds[i].UUID.ToString();
-                    }
-                }
-
-                Compact(uuid);
+                Compact(GetByLocation(location));
             }
         }
 
@@ -178,6 +204,56 @@ namespace compacthdd
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ButtonResize_Click(object sender, RoutedEventArgs e)
+        // Code for event handler on Resize button
+        {
+            if (Box.SelectedItem != null)
+            {
+                String location = (BoxR.SelectedItem).ToString();
+
+                Resize(GetByLocation(location));
+            }
+        }
+
+        private void BoxR_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Change value in TextBox - DesiredSize
+            if (BoxR.SelectedItem != null)
+                {
+                String location = (BoxR.SelectedItem).ToString();
+                DesiredSize.Text = GetByLocation(location).Size.ToString();
+            }
+        }
+
+        private void ClearAllListBoxes()
+        {
+            Box.Items.Clear();
+            BoxR.Items.Clear();
+        }
+
+        private void SetFirstLineSelected()
+        {
+            Box.SelectedIndex = 0;
+            BoxR.SelectedIndex = 0;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAllListBoxes();
+            FillListBox();
+            SetFirstLineSelected();
         }
     }
 }

@@ -5,15 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:compacthdd"
         mc:Ignorable="d"
-        ResizeMode="CanMinimize"
+        ResizeMode="CanResize"
         Icon="C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\Resources\disk.png"
         Title="Compact HDD" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Name="Label" Content="Select disk image:" HorizontalAlignment="Left" Margin="54,30,0,0" VerticalAlignment="Top"/>
-        <ListBox Name="Box" HorizontalAlignment="Center" Height="154" Margin="0,55,0,0" VerticalAlignment="Top" Width="400" SelectionChanged="Box_SelectionChanged" SelectedIndex="0"/>
-        <Button Name="Button" Content="Compact" HorizontalAlignment="Center" Height="40" Margin="0,235,0,0" VerticalAlignment="Top" Width="165" Click="Button_Click"/>
+        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0,2,0,0" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Compact">
+                <Grid>
+                    <Label Name="Label" Content="Select disk image:" HorizontalAlignment="Left" Margin="55,15,0,0" VerticalAlignment="Top" Height="26" VerticalContentAlignment="Center"/>
+                    <ListBox Name="Box" Height="154" Margin="60,40,60,0" VerticalAlignment="Top" SelectedIndex="0"/>
+                    <Button Name="Button" Content="Compact" HorizontalAlignment="Center" Height="40" Margin="0,215,0,0" VerticalAlignment="Top" Width="164" Click="ButtonCompact_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Resize">
+                <Grid>
+                    <Label Name="LabelR" Content="Select disk image:" HorizontalAlignment="Left" Margin="55,15,0,0" VerticalAlignment="Top" Height="26" VerticalContentAlignment="Center"/>
+                    <ListBox Name="BoxR" Height="154" Margin="60,40,60,0" VerticalAlignment="Top" SelectedIndex="0" SelectionChanged="BoxR_SelectionChanged"/>
+                    <Button Name="ButtonR" Content="Resize" HorizontalAlignment="Right" Height="25" Margin="0,229,60,0" VerticalAlignment="Top" Width="110" Click="ButtonResize_Click"/>
+                    <TextBox Name="DesiredSize" HorizontalAlignment="Left" Height="25" Margin="60,229,0,0" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" Width="104" TextChanged="TextBox_TextChanged_2" Text="1000" VerticalContentAlignment="Center"/>
+                    <Label Content="Enter desired size of disk:" HorizontalAlignment="Left" Height="25" Margin="55,204,0,0" VerticalAlignment="Top" Width="195" VerticalContentAlignment="Center"/>
+                    <Label Content="MBs" HorizontalAlignment="Left" Height="25" Margin="165,229,0,0" VerticalAlignment="Top" Width="40" VerticalContentAlignment="Center"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Content="Refresh" Margin="455,0,5,0" VerticalAlignment="Top" Height="25" Click="Button_Click"/>
     </Grid>
 </Window>
