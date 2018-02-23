@@ -1,0 +1,14 @@
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\bin\Release\compacthdd.exe.config
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\bin\Release\compacthdd.exe
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\bin\Release\compacthdd.pdb
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\obj\Release\MainWindow.g.cs
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\obj\Release\App.g.cs
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\obj\Release\compacthdd_MarkupCompile.cache
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\obj\Release\compacthdd_MarkupCompile.lref
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\obj\Release\MainWindow.baml
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\obj\Release\compacthdd.g.resources
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\obj\Release\compacthdd.Properties.Resources.resources
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\obj\Release\compacthdd.csproj.GenerateResource.Cache
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\obj\Release\compacthdd.csproj.CoreCompileInputs.cache
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\obj\Release\compacthdd.exe
+C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\obj\Release\compacthdd.pdb

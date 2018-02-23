@@ -1,0 +1,19 @@
+﻿<Window x:Class="compacthdd.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:compacthdd"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Icon="C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\Resources\disk.png"
+        Title="Compact HDD" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Name="Label" Content="Select disk image:" HorizontalAlignment="Left" Margin="54,30,0,0" VerticalAlignment="Top"/>
+        <ListBox Name="Box" HorizontalAlignment="Center" Height="154" Margin="0,55,0,0" VerticalAlignment="Top" Width="400" SelectionChanged="Box_SelectionChanged" SelectedIndex="0"/>
+        <Button Name="Button" Content="Compact" HorizontalAlignment="Center" Height="40" Margin="0,235,0,0" VerticalAlignment="Top" Width="165" Click="Button_Click"/>
+    </Grid>
+</Window>
