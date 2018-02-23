@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:compacthdd"
         mc:Ignorable="d"
-        ResizeMode="CanResize"
+        ResizeMode="CanMinimize"
         Icon="C:\Users\lukag\Documents\ResizeHDD\compacthdd\compacthdd\Resources\disk.png"
         Title="Compact HDD" Height="350" Width="525">
     <Grid>
