@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.IO;
 using Microsoft.Win32;
+using System.Windows.Media;
 
 namespace compacthdd
 {
@@ -254,6 +255,14 @@ namespace compacthdd
             ClearAllListBoxes();
             FillListBox();
             SetFirstLineSelected();
+        }
+
+        private void Refresh_MouseEnter(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Refresh_MouseLeave(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

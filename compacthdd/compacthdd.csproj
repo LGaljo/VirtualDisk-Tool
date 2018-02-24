@@ -27,7 +27,7 @@
     <TargetCulture>en</TargetCulture>
     <ProductName>VirtualDisk Tool</ProductName>
     <PublisherName>Luka Galjot</PublisherName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -154,6 +154,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="disk.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_refresh.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
